@@ -1,0 +1,19 @@
+version: '3'
+
+networks:
+  net_ledger_front:
+    driver: bridge
+    name: net_ledger_front
+
+services:
+  vue-app:
+    container_name: ledger_app_front
+    hostname: ledger_app_front
+    build:
+      context: 'docker'
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+      - ./package.json:/package.json
+    networks:
+      - net_ledger_front
